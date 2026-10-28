@@ -1,0 +1,28 @@
+[gd_scene load_steps=5 format=3 uid="uid://cq1xfxiphwxtc"]
+
+[ext_resource type="Texture2D" uid="uid://dhlfe45kqr6fs" path="res://templeg.png" id="1_hjvc4"]
+[ext_resource type="Script" uid="uid://d0ncbbxb4skt2" path="res://boot.gd" id="1_n76rq"]
+[ext_resource type="Texture2D" uid="uid://bkim2pfcu5sau" path="res://tempwarn.png" id="2_t5imi"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hjvc4"]
+size = Vector2(36, 15)
+
+[node name="Stomp" type="Node2D"]
+script = ExtResource("1_n76rq")
+
+[node name="Shadow" type="Sprite2D" parent="."]
+position = Vector2(0.999999, 0)
+scale = Vector2(2.21875, 2.21875)
+texture = ExtResource("2_t5imi")
+
+[node name="Foot" type="Sprite2D" parent="."]
+scale = Vector2(2.21875, 2.21875)
+texture = ExtResource("1_hjvc4")
+
+[node name="Hitbox" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+position = Vector2(-9, 125.5)
+shape = SubResource("RectangleShape2D_hjvc4")
+
+[connection signal="body_entered" from="Hitbox" to="." method="_on_hitbox_body_entered"]

@@ -1,0 +1,25 @@
+[gd_scene load_steps=6 format=3 uid="uid://dha13pd4tjxwx"]
+
+[ext_resource type="PackedScene" uid="uid://lkamtabi0jkv" path="res://player.tscn" id="1_4aw08"]
+[ext_resource type="Script" uid="uid://bxj7b5jyly3hb" path="res://game.gd" id="1_kg50j"]
+[ext_resource type="PackedScene" uid="uid://cxlxchrjtrv6d" path="res://groundscraper.tscn" id="2_fi5ky"]
+[ext_resource type="Script" uid="uid://g21530rrj0gq" path="res://camera_2d.gd" id="3_hmlot"]
+[ext_resource type="Script" uid="uid://61gntit6mxka" path="res://stomp_timer.gd" id="5_kg50j"]
+
+[node name="Excuse Me, Pardon Me" type="Node2D"]
+script = ExtResource("1_kg50j")
+
+[node name="Player" parent="." instance=ExtResource("1_4aw08")]
+position = Vector2(576, 500)
+
+[node name="Mousehole" parent="." instance=ExtResource("2_fi5ky")]
+position = Vector2(576, -3000)
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(570, 512)
+script = ExtResource("3_hmlot")
+
+[node name="StompTimer" type="Timer" parent="."]
+script = ExtResource("5_kg50j")
+
+[connection signal="timeout" from="StompTimer" to="." method="_on_stomp_timer_timeout"]
