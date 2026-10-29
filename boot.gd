@@ -26,7 +26,6 @@ func _stomp() -> void:
 	for body in bodies:
 		if body.has_method("hit"):
 			body.hit()
-
 	await get_tree().create_timer(0.4).timeout
 	var exit_tween = create_tween()
 	exit_tween.tween_property(self, "modulate:a", 0.0, 0.2)
