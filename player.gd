@@ -14,16 +14,20 @@ var dash_time_left := 0.0
 var cooldown_left := 0.0
 var dash_direction := Vector2.ZERO
 var last_direction := Vector2.RIGHT
+var color = false
 
 func _process(delta: float) -> void:
 	if dash_time_left > 0.0:
 		$ColorRect.self_modulate = Color8(0,0,255)
-	elif Global.invincible == true:
+	elif color:
 		$ColorRect.self_modulate = Color8(0,255,0)
 	else:
 		$ColorRect.self_modulate = Color8(255,255,255)
 		
 func _physics_process(delta: float) -> void:
+	position.x = clamp(position.x, -575, 525)
+	position.y = clamp(position.y, -305, 290)
+	
 	var input_direction := Input.get_vector("Left", "Right", "Up", "Down")
 
 	if input_direction != Vector2.ZERO:
@@ -53,15 +57,20 @@ func _physics_process(delta: float) -> void:
 func squeak() -> void:
 	Global.invincible = true
 	can_use_iframe = false
+	color = true
+	print("squeaaak!")
 	
 	await get_tree().create_timer(iframe_duration).timeout
 	Global.invincible = false
-
+	print("no")
+	color = false
+	
 	await get_tree().create_timer(iframe_cooldown).timeout
 	can_use_iframe = true
 
 func hit() -> void:
-	if Global.invincible:
+	if Global.invincible == true:
 		return
 	print("Crushed! Game Over!")
 	get_tree().reload_current_scene()
+	

@@ -1,0 +1,41 @@
+[gd_scene load_steps=2 format=3 uid="uid://cpav2v0dvogqf"]
+
+[ext_resource type="Script" uid="uid://dp5vhjcs23ovv" path="res://main_menu.gd" id="1_06t4h"]
+
+[node name="Main Menu" type="Node2D"]
+script = ExtResource("1_06t4h")
+
+[node name="Start" type="Button" parent="."]
+offset_left = 133.0
+offset_top = -135.0
+offset_right = 388.0
+offset_bottom = -68.0
+text = "Start
+"
+
+[node name="Options" type="Button" parent="."]
+offset_left = 133.0
+offset_top = -35.0
+offset_right = 388.0
+offset_bottom = 32.0
+text = "Options"
+
+[node name="Quit" type="Button" parent="."]
+offset_left = 133.0
+offset_top = 65.0
+offset_right = 388.0
+offset_bottom = 132.0
+text = "Quit"
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="GAME" type="Label" parent="."]
+offset_left = -313.0
+offset_top = -142.0
+offset_right = -267.0
+offset_bottom = -119.0
+text = "GAME"
+
+[connection signal="pressed" from="Start" to="." method="_on_start_pressed"]
+[connection signal="pressed" from="Options" to="." method="_on_options_pressed"]
+[connection signal="pressed" from="Quit" to="." method="_on_quit_pressed"]

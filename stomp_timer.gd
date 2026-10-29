@@ -7,7 +7,7 @@ func _ready() -> void:
 
 func spawn_loop() -> void:
 	while true:
-		await get_tree().create_timer(1.5).timeout
+		await get_tree().create_timer(1.0).timeout
 		var new_obst = boot.instantiate()
-		new_obst.position = Vector2(randf_range(0, 1174), randf_range(200, 800))
+		new_obst.position = Vector2(randf_range(0, 1000), randf_range(300, 800))
 		add_child(new_obst)
