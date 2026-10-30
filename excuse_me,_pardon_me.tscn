@@ -17,7 +17,7 @@ offset_bottom = 935.0
 color = Color(0.522543, 0.282228, 0.16241, 1)
 
 [node name="Player" parent="." instance=ExtResource("1_4aw08")]
-position = Vector2(576, 500)
+position = Vector2(574, 500)
 
 [node name="Mousehole" parent="." instance=ExtResource("2_fi5ky")]
 position = Vector2(576, -3000)
@@ -29,4 +29,41 @@ script = ExtResource("3_hmlot")
 [node name="StompTimer" type="Timer" parent="."]
 script = ExtResource("5_kg50j")
 
+[node name="Messages" type="CanvasLayer" parent="."]
+
+[node name="Death Message" type="Label" parent="Messages"]
+offset_left = 488.0
+offset_top = 274.0
+offset_right = 665.0
+offset_bottom = 297.0
+text = "You Died lol"
+
+[node name="ColorRect" type="ColorRect" parent="Messages/Death Message"]
+show_behind_parent = true
+layout_mode = 0
+offset_left = -579.0
+offset_top = -410.0
+offset_right = 706.0
+offset_bottom = 503.0
+color = Color(0.435294, 0, 0.00784314, 0.607843)
+
+[node name="Main Menu" type="Button" parent="Messages/Death Message"]
+layout_mode = 0
+offset_left = -162.0
+offset_top = 96.0
+offset_right = -5.0
+offset_bottom = 127.0
+text = "Back to Main Menu
+"
+
+[node name="Retry" type="Button" parent="Messages/Death Message"]
+layout_mode = 0
+offset_left = 105.0
+offset_top = 99.0
+offset_right = 199.0
+offset_bottom = 130.0
+text = "Retry Level"
+
 [connection signal="timeout" from="StompTimer" to="." method="_on_stomp_timer_timeout"]
+[connection signal="pressed" from="Messages/Death Message/Main Menu" to="." method="_on_main_menu_pressed"]
+[connection signal="pressed" from="Messages/Death Message/Retry" to="." method="_on_retry_pressed"]

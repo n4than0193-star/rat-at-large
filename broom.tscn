@@ -1,3 +1,33 @@
-[gd_scene format=3 uid="uid://b6hpp7o5nr13l"]
+[gd_scene load_steps=5 format=3 uid="uid://b6hpp7o5nr13l"]
+
+[ext_resource type="Script" uid="uid://d4gujh3y0xygg" path="res://broom.gd" id="1_37123"]
+[ext_resource type="Texture2D" uid="uid://dhlfe45kqr6fs" path="res://templeg.png" id="2_37123"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1xdhj"]
+atlas = ExtResource("2_37123")
+region = Rect2(0, 108.5, 24, 15)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5jius"]
+size = Vector2(33.8323, 12.0815)
 
 [node name="Broom" type="Node2D"]
+script = ExtResource("1_37123")
+
+[node name="Warning" type="Line2D" parent="."]
+width = 25.0
+default_color = Color(1, 0.0156863, 0.00392157, 1)
+
+[node name="Broom" type="Sprite2D" parent="."]
+position = Vector2(0, -69.3096)
+rotation = -1.57079
+scale = Vector2(12.245, 12.406)
+texture = SubResource("AtlasTexture_1xdhj")
+
+[node name="Hitbox" type="Area2D" parent="Broom"]
+scale = Vector2(0.450704, 0.450704)
+collision_layer = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Broom/Hitbox"]
+position = Vector2(0.0473836, 10.6346)
+scale = Vector2(1.03624, 1.03624)
+shape = SubResource("RectangleShape2D_5jius")

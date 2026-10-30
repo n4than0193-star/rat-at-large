@@ -31,8 +31,8 @@ func _ready() -> void:
 
 	var tween := create_tween().set_parallel(true)
 	tween.tween_property(self, "radius", max_radius, duration) \
-		.set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_OUT)
-	tween.tween_property(self, "modulate:a", 0.0, duration)			#this tween was helped by AI sorry
+		.set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_OUT)		#
+	tween.tween_property(self, "modulate:a", 0.0, duration)			#this tween was helped by AI sorry (and it guided me through coding this shockwave)
 	tween.finished.connect(queue_free)
 
 func _on_body_entered(body: Node2D) -> void:
