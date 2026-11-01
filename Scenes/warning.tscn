@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://bmwai1h6tihdv"]
+
+[ext_resource type="Script" uid="uid://bodatnf70yg68" path="res://Scripts/warning.gd" id="1_jupec"]
+[ext_resource type="Texture2D" uid="uid://bkim2pfcu5sau" path="res://Art/tempwarn.png" id="2_8hufe"]
+
+[node name="Warning" type="Node2D"]
+script = ExtResource("1_jupec")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(2.09375, 2.09375)
+texture = ExtResource("2_8hufe")

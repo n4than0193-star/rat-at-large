@@ -10,14 +10,14 @@ config_version=5
 
 [application]
 
-config/name="Excuse Me, Pardon Me"
+config/name="Rat-At-Large"
 run/main_scene="uid://cpav2v0dvogqf"
 config/features=PackedStringArray("4.4", "Mobile")
-config/icon="res://icon.svg"
+config/icon="res://Art/icon.svg"
 
 [autoload]
 
-Global="*res://global.gd"
+Global="*res://Scripts/global.gd"
 
 [editor_plugins]
 

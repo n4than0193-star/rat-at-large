@@ -1,0 +1,72 @@
+[gd_scene load_steps=10 format=3 uid="uid://lkamtabi0jkv"]
+
+[ext_resource type="Script" uid="uid://bay106gwisvg8" path="res://Scripts/player.gd" id="1_4flbx"]
+[ext_resource type="Texture2D" uid="uid://6fim5rx5s014" path="res://Art/mouse_dash(wip).png" id="2_1jxqw"]
+[ext_resource type="Texture2D" uid="uid://c2xk4xgo0jo8i" path="res://Art/dead_mouse.png" id="3_dw050"]
+[ext_resource type="Texture2D" uid="uid://sshvaj84bt4o" path="res://Art/mouse_walk2.png" id="4_b26j0"]
+[ext_resource type="Texture2D" uid="uid://dwxfgocmj8iwp" path="res://Art/mouse_walk1.png" id="5_n7ghd"]
+[ext_resource type="Texture2D" uid="uid://qot2esjism7i" path="res://Art/mouse_walk3.png" id="6_nvl01"]
+[ext_resource type="Texture2D" uid="uid://drhxttbropqdc" path="res://Art/mouse_walk4.png" id="7_ivps1"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_4flbx"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_1jxqw")
+}],
+"loop": true,
+"name": &"Dash",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_dw050")
+}],
+"loop": true,
+"name": &"Dead",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_b26j0")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_n7ghd")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_b26j0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_nvl01")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_ivps1")
+}],
+"loop": true,
+"name": &"Walk",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_sh265"]
+size = Vector2(190, 380)
+
+[node name="Player" type="Node2D" groups=["Player"]]
+
+[node name="Player" type="CharacterBody2D" parent="."]
+scale = Vector2(0.2, 0.2)
+collision_mask = 14
+script = ExtResource("1_4flbx")
+
+[node name="ColorRect" type="AnimatedSprite2D" parent="Player"]
+sprite_frames = SubResource("SpriteFrames_4flbx")
+animation = &"Idle"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
+position = Vector2(25, -40)
+scale = Vector2(0.999999, 0.999999)
+shape = SubResource("RectangleShape2D_sh265")

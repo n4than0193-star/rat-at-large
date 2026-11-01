@@ -1,0 +1,17 @@
+[gd_scene load_steps=2 format=3 uid="uid://cct42tgmdgj6v"]
+
+[ext_resource type="Script" uid="uid://dby53aiwx0rce" path="res://Scripts/options.gd" id="1_prnvy"]
+
+[node name="Options" type="Node2D"]
+script = ExtResource("1_prnvy")
+
+[node name="Placeholder" type="Button" parent="."]
+offset_left = -576.0
+offset_top = -324.0
+offset_right = 576.0
+offset_bottom = 324.0
+text = "Placeholder (click here to return to main menu)"
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[connection signal="pressed" from="Placeholder" to="." method="_on_placeholder_pressed"]

@@ -1,0 +1,133 @@
+[gd_scene load_steps=16 format=3 uid="uid://crlle61g2etyn"]
+
+[ext_resource type="Script" uid="uid://bxj7b5jyly3hb" path="res://Scripts/game.gd" id="1_t7v2y"]
+[ext_resource type="Texture2D" uid="uid://qxmdejj7qhrn" path="res://Art/bg_3.png" id="2_ait6c"]
+[ext_resource type="PackedScene" uid="uid://lkamtabi0jkv" path="res://Scenes/player.tscn" id="3_vcilj"]
+[ext_resource type="Script" uid="uid://g21530rrj0gq" path="res://Scripts/camera_2d.gd" id="4_bl0du"]
+[ext_resource type="Script" uid="uid://61gntit6mxka" path="res://Scripts/spawn_timer.gd" id="5_q0ycs"]
+[ext_resource type="Texture2D" uid="uid://o4sqlha0q5ek" path="res://Art/youdied4.png" id="6_hj5x7"]
+[ext_resource type="Texture2D" uid="uid://bs1qq4actylfy" path="res://Art/youdied5.png" id="7_yvrk7"]
+[ext_resource type="Texture2D" uid="uid://cemx66hh3vvew" path="res://Art/youdied2.png" id="8_fhuy1"]
+[ext_resource type="Texture2D" uid="uid://b1vg1sotqno0j" path="res://Art/youdied3.png" id="9_i6dbo"]
+[ext_resource type="Texture2D" uid="uid://bg4k2rigxh87" path="res://Art/youdied1.png" id="10_e2piv"]
+[ext_resource type="PackedScene" uid="uid://desnpu25y5ndc" path="res://Scenes/hearts.tscn" id="11_ijtdf"]
+[ext_resource type="Texture2D" uid="uid://d2yn0y8aj83r8" path="res://Art/youwon.png" id="11_q0ycs"]
+[ext_resource type="Script" uid="uid://43b0vc3i12gb" path="res://Scripts/enemy_hearts.gd" id="12_bl0du"]
+[ext_resource type="Texture2D" uid="uid://ccqs7dhlksqis" path="res://Art/chef.png" id="12_vcilj"]
+[ext_resource type="Texture2D" uid="uid://bqbcvucmt8ypd" path="res://Art/rat.png" id="13_bl0du"]
+
+[node name="Level 2" type="Node2D"]
+script = ExtResource("1_t7v2y")
+
+[node name="Background" type="Sprite2D" parent="."]
+position = Vector2(569, 399)
+scale = Vector2(6.66877, 6.69896)
+texture = ExtResource("2_ait6c")
+
+[node name="Player" parent="." instance=ExtResource("3_vcilj")]
+position = Vector2(574, 500)
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(570, 512)
+script = ExtResource("4_bl0du")
+
+[node name="StompTimer" type="Timer" parent="."]
+script = ExtResource("5_q0ycs")
+
+[node name="Messages" type="CanvasLayer" parent="."]
+
+[node name="Death Screen" type="Node2D" parent="Messages"]
+
+[node name="ColorRect" type="ColorRect" parent="Messages/Death Screen"]
+show_behind_parent = true
+offset_left = -89.0
+offset_top = -135.0
+offset_right = 1196.0
+offset_bottom = 778.0
+color = Color(0.133333, 0.121569, 0.203922, 0.607843)
+
+[node name="Main Menu" type="TextureButton" parent="Messages/Death Screen"]
+offset_left = 218.0
+offset_top = 381.0
+offset_right = 375.0
+offset_bottom = 413.0
+scale = Vector2(2.5, 2.5)
+texture_normal = ExtResource("6_hj5x7")
+texture_pressed = ExtResource("7_yvrk7")
+texture_hover = ExtResource("6_hj5x7")
+
+[node name="Retry" type="TextureButton" parent="Messages/Death Screen"]
+offset_left = 631.0
+offset_top = 381.0
+offset_right = 759.0
+offset_bottom = 413.0
+scale = Vector2(2.5, 2.5)
+texture_normal = ExtResource("8_fhuy1")
+texture_pressed = ExtResource("9_i6dbo")
+texture_hover = ExtResource("8_fhuy1")
+
+[node name="Death Message" type="Sprite2D" parent="Messages/Death Screen"]
+position = Vector2(592, 209)
+scale = Vector2(4, 4)
+texture = ExtResource("10_e2piv")
+
+[node name="Win Screen" type="Node2D" parent="Messages"]
+
+[node name="ColorRect" type="ColorRect" parent="Messages/Win Screen"]
+show_behind_parent = true
+offset_left = -89.0
+offset_top = -135.0
+offset_right = 1196.0
+offset_bottom = 778.0
+color = Color(0.984, 0.949, 0.212, 0.304)
+metadata/_edit_use_anchors_ = true
+
+[node name="Main Menu" type="TextureButton" parent="Messages/Win Screen"]
+offset_left = 218.0
+offset_top = 381.0
+offset_right = 375.0
+offset_bottom = 413.0
+scale = Vector2(2.5, 2.5)
+texture_normal = ExtResource("6_hj5x7")
+texture_pressed = ExtResource("7_yvrk7")
+texture_hover = ExtResource("6_hj5x7")
+metadata/_edit_use_anchors_ = true
+
+[node name="Retry" type="TextureButton" parent="Messages/Win Screen"]
+offset_left = 631.0
+offset_top = 381.0
+offset_right = 759.0
+offset_bottom = 413.0
+scale = Vector2(2.5, 2.5)
+texture_normal = ExtResource("8_fhuy1")
+texture_pressed = ExtResource("9_i6dbo")
+texture_hover = ExtResource("8_fhuy1")
+metadata/_edit_use_anchors_ = true
+
+[node name="Win Message" type="Sprite2D" parent="Messages/Win Screen"]
+position = Vector2(592, 209)
+scale = Vector2(4, 4)
+texture = ExtResource("11_q0ycs")
+
+[node name="Hearts" parent="." instance=ExtResource("11_ijtdf")]
+position = Vector2(208, 235)
+scale = Vector2(0.5, 0.5)
+
+[node name="Enemy_Hearts" parent="." instance=ExtResource("11_ijtdf")]
+position = Vector2(934, 235)
+scale = Vector2(0.5, 0.5)
+script = ExtResource("12_bl0du")
+
+[node name="Kid" type="Sprite2D" parent="."]
+position = Vector2(1087, 245)
+scale = Vector2(3.59375, 3.28572)
+texture = ExtResource("12_vcilj")
+
+[node name="Rat" type="Sprite2D" parent="."]
+position = Vector2(64, 241)
+scale = Vector2(0.410156, 0.410156)
+texture = ExtResource("13_bl0du")
+
+[connection signal="timeout" from="StompTimer" to="." method="_on_stomp_timer_timeout"]
+[connection signal="pressed" from="Messages/Death Screen/Main Menu" to="." method="_on_main_menu_pressed"]
+[connection signal="pressed" from="Messages/Death Screen/Retry" to="." method="_on_retry_pressed"]

@@ -1,0 +1,25 @@
+[gd_scene load_steps=5 format=3 uid="uid://cxlxchrjtrv6d"]
+
+[ext_resource type="Script" uid="uid://bkaur85y7s77u" path="res://Scripts/marble.gd" id="1_v8vi7"]
+[ext_resource type="Texture2D" uid="uid://bhpao3c2rvq2m" path="res://Art/marble.png" id="2_aayb5"]
+[ext_resource type="Texture2D" uid="uid://bkim2pfcu5sau" path="res://Art/tempwarn.png" id="3_aayb5"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_sdb3o"]
+radius = 15.0
+
+[node name="Marble" type="Node2D"]
+script = ExtResource("1_v8vi7")
+
+[node name="Warning" type="Sprite2D" parent="."]
+scale = Vector2(2, 2)
+texture = ExtResource("3_aayb5")
+
+[node name="Marble" type="Sprite2D" parent="."]
+scale = Vector2(5, 5)
+texture = ExtResource("2_aayb5")
+
+[node name="Hitbox" type="Area2D" parent="Marble"]
+collision_layer = 4
+
+[node name="Hitbox" type="CollisionShape2D" parent="Marble/Hitbox"]
+shape = SubResource("CapsuleShape2D_sdb3o")

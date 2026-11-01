@@ -1,0 +1,49 @@
+[gd_scene load_steps=7 format=3 uid="uid://cq1xfxiphwxtc"]
+
+[ext_resource type="Script" uid="uid://d0ncbbxb4skt2" path="res://Scripts/boot.gd" id="1_eyucu"]
+[ext_resource type="Texture2D" uid="uid://bkim2pfcu5sau" path="res://Art/tempwarn.png" id="2_a0vx2"]
+[ext_resource type="Texture2D" uid="uid://bvs56pdt3lwvt" path="res://Art/kidleg.png" id="3_eyucu"]
+[ext_resource type="Texture2D" uid="uid://ds0jsplwk06rh" path="res://Art/chefleg.png" id="4_a0vx2"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_4l64y"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_eyucu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_a0vx2")
+}],
+"loop": true,
+"name": &"Sprites",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hjvc4"]
+size = Vector2(33.8323, 12.0815)
+
+[node name="Stomp" type="Node2D"]
+scale = Vector2(1, 0.981105)
+script = ExtResource("1_eyucu")
+
+[node name="Shadow" type="Sprite2D" parent="."]
+position = Vector2(0.999999, 0)
+scale = Vector2(1.60971, 1.63927)
+texture = ExtResource("2_a0vx2")
+
+[node name="Foot" type="AnimatedSprite2D" parent="."]
+position = Vector2(17, -88.6755)
+scale = Vector2(12.245, 12.406)
+sprite_frames = SubResource("SpriteFrames_4l64y")
+animation = &"Sprites"
+
+[node name="Hitbox" type="Area2D" parent="Foot"]
+scale = Vector2(0.450704, 0.450704)
+collision_layer = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Foot/Hitbox"]
+position = Vector2(-5.0735, 13.1248)
+scale = Vector2(1.03624, 1.03624)
+shape = SubResource("RectangleShape2D_hjvc4")
+
+[connection signal="body_entered" from="Foot/Hitbox" to="." method="_on_hitbox_body_entered"]

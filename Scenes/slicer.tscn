@@ -1,0 +1,48 @@
+[gd_scene load_steps=6 format=3 uid="uid://b6hpp7o5nr13l"]
+
+[ext_resource type="Script" uid="uid://d4gujh3y0xygg" path="res://Scripts/broom.gd" id="1_t46uc"]
+[ext_resource type="Texture2D" uid="uid://1yeuamuilr7l" path="res://Art/lollipop.png" id="2_o5o3i"]
+[ext_resource type="Texture2D" uid="uid://cknhg0mu4j3l0" path="res://Art/knife.png" id="3_6x1gu"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_xshlm"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_o5o3i")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_6x1gu")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_5afnn"]
+radius = 263.362
+height = 1037.92
+
+[node name="Broom" type="Node2D"]
+script = ExtResource("1_t46uc")
+
+[node name="Broom" type="AnimatedSprite2D" parent="."]
+position = Vector2(-2.99999, 0.124359)
+rotation = 3.14159
+scale = Vector2(1.05796, 1.02813)
+sprite_frames = SubResource("SpriteFrames_xshlm")
+frame_progress = 0.440996
+
+[node name="Hitbox" type="Area2D" parent="Broom"]
+position = Vector2(-2.83567, 17.6284)
+scale = Vector2(0.426011, 0.438372)
+collision_layer = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Broom/Hitbox"]
+position = Vector2(-64.3438, -11.0939)
+scale = Vector2(1.03624, 1.03624)
+shape = SubResource("CapsuleShape2D_5afnn")
+
+[node name="Warning" type="Line2D" parent="."]
+points = PackedVector2Array(-87, -11)
+width = 25.0
+default_color = Color(1, 0.0156863, 0.00392157, 1)
